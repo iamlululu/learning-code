@@ -1,0 +1,92 @@
+在使用git前需要将本地客户端公钥同步到github远端,建立SSH key
+
+
+
+cd '目录'
+
+
+
+git init
+
+
+
+git add
+
+
+
+git commit -m "备注"
+
+
+
+git status
+
+
+
+git diff 文件名.后缀
+
+
+
+cat 文件名.后缀
+
+
+
+git log
+
+
+
+git log --pretty=oneline
+git log --graph								# 查看分支合并图
+
+
+
+git reset --hard HEAD^                  	 # 回退到当前版本的上一个版本，指针回指
+
+
+
+git reset --hard 提交ID						 # 回退到指定ID版本，HEAD指向该版本
+
+
+
+git reflog                                   # 记录Git Bush命令历史，“后悔药”，可用于查询版本ID
+
+
+
+git checkout -- 文件名.后缀                  # ①若目标文件添加到stage，将目标文件的所有更改进行撤销 ②若目标文件在添加到stage后又做修改，则撤销至文件添加到stage的状态,总之，checkout命令就是将目标文件撤销至最近的一次add或者commit状态
+
+
+
+git reset HEAD 文件名.后缀				 	 # 在目标文件commit之前，将目标文件已经添加到stage的部分撤销，也就是清除stage暂存区
+
+
+
+rm 文件名.后缀								 # 删除文件,但版本库中的文件未删除，可用checkou或者reset命令等对文件进行恢复
+git rm 文件名.后缀							 # 将版本库中的文件记录进行删除,删除后版本库中不存在该文件记录。注意，git rm命令之后需要进行commit提交,提交后找回文件只能通过reset退回版本库找回\
+
+
+
+git remote add origin git@github.com:个人github地址/远程目标仓库.git            # 将本地git仓库与远程某目标仓库关联
+
+
+
+git push -u origin master					 # 第一次推送是加参数-u，将本地master分支与远程仓库master分支进行关联,后续本地仓库的推送不用再加此参数
+git push origin master						 # 本地仓库master推送至远程仓库master
+
+
+
+git clone git@github.com:目标地址/目标仓库.git								    # 将远程目标仓库克隆到本地
+
+
+
+git checkout -b 分支名称		          		 								# 创建新分支，并将HEAD指向新分支
+git branch 新分支																# 创建新分支
+git checkout 目标分支															# 将HEAD指向目标分支
+git branch																		# 查看仓库所有分支
+git merge 目标分支																# 将目标分支合并到当前工作分子
+git branch -d 目标分支														    # 删除目标分支
+git switch -c 新分支															# 创建并切换到新的分支
+git switch 目标分支																# 切换到目标分支
+
+git pull --rebase origin master													# 远端和本地冲突，拒绝push时，将远端同步到本地
+
+
+
